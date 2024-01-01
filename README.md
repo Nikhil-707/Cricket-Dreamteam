@@ -1,3 +1,9 @@
+
+
+https://github.com/Nikhil-707/Cricket-Dreamteam/assets/139217655/9e63c5ed-c2ec-4c84-9f71-eb1ebc9450f4
+
+
+
 # Fantasy Cricket Game
 Fantasy Cricket Game is an online cricket game developed as part of the Internshala Programming with Python Training Contest, where it won the first prize. The game allows users to create a virtual team of cricket players and earn score points based on their performance in real-life matches. This game offers an engaging and interactive platform for cricket enthusiasts to showcase their skills in team selection and strategic decision-making.
 
