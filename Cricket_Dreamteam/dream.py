@@ -10,10 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-    	"""
-		Self generated. Do not edit.
-		Acts like a constructor. Add attributes here.
-    	"""
+    	
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(900, 675)
         MainWindow.move(100,10)
@@ -144,7 +141,7 @@ class Ui_MainWindow(object):
 "font: 75 12pt \"MS Shell Dlg 2\";")
         self.list1.setAutoScroll(True)
         self.list1.setObjectName("list1")
-	    self.list1.itemDoubleClicked.connect(self.removelist1)
+        self.list1.itemDoubleClicked.connect(self.removelist1)
         self.verticalLayout_8.addWidget(self.list1)
         self.btn1 = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
@@ -207,7 +204,7 @@ class Ui_MainWindow(object):
 "font: 75 12pt \"MS Shell Dlg 2\";")
         self.list2.setObjectName("list2")
         self.list2.itemDoubleClicked.connect(self.removelist2)        
-	    self.verticalLayout_9.addWidget(self.list2)
+        self.verticalLayout_9.addWidget(self.list2)
         self.btn2 = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -265,14 +262,13 @@ class Ui_MainWindow(object):
         self.wk=0
         self.avl=1000
         self.used=0
-	    self.retranslateUi(MainWindow)
+	    
+        self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.customContextMenuRequested.connect(self.context_menu)
     
     def retranslateUi(self, MainWindow):
-    	"""
-		Self generated. Do not edit the contents of this function.
-    	"""
+    	
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Dream Team Selector"))
         self.label_4.setText(_translate("MainWindow", "Batsmen"))
@@ -298,10 +294,7 @@ class Ui_MainWindow(object):
         self.actionQuit.setText(_translate("MainWindow", "Team Score"))
     
     def menufunction(self, action):
-    	"""
-		action: The option selected from menu.
-		function: Performs the selected option.
-    	"""
+    	
         txt=action.text()
         if txt=="New Team":        	## Reset the class attributes
             self.bat=0
@@ -347,12 +340,7 @@ class Ui_MainWindow(object):
             ret=Dialog.exec()
 
     def saveteam(self,nm,string,val):
-    	"""
-    	nm: Name of team
-    	string: List of players in team separated by commas
-    	val: Points used out of 1000
-    	Function: Make entry for new team inside database
-    	"""
+    	
     	## If total players is not 11, show error pop up
         if self.bat+self.bwl+self.ar+self.wk!=11:
             self.showdlg("Insufficient players")
@@ -406,11 +394,9 @@ class Ui_MainWindow(object):
         MainWindow.menu.triggered[QtWidgets.QAction].connect(MainWindow.profile)
         MainWindow.menu.exec_(QtGui.QCursor.pos())
 
-	def fillList(self,ctgr):
-		"""
-		ctgr: Category of players
-		Function: Populate list1 with players of given category
-		"""
+	
+    def fillList(self,ctgr):
+		
 		## If name of team is not already selected, show error pop up
         if self.l1.text()=='???':
             self.showdlg("Enter name of team")
@@ -433,19 +419,17 @@ class Ui_MainWindow(object):
         self.fillList(ctgr)
     
     def criteria(self,ctgr, item):
-    	"""
-		ctgr: Category of player
-		Function: Check for criterion for each category and show appropriate error pop up
-    	"""
+    	
         msg=''
         if ctgr=="BAT" and self.bat>=5:msg="Batsmen not more than 5"
         if ctgr=="BWL" and self.bwl>=5:msg="bowlers not more than 5"
         if ctgr=="AR" and self.ar>=3:msg="Allrounders not more than 3"
         if ctgr=="WK" and self.wk>=1:msg="Wicketkeepers not more than 1"
-        if msg!='' or self.avl<=0:
-        	msg = 'You have exhausted your points'
+        if msg != '' or self.avl <= 0: 
+            msg = 'You have exhausted your points'
             self.showdlg(msg)
             return False
+   
         
         if ctgr=="BAT":self.bat+=1
         if ctgr=="BWL":self.bwl+=1
@@ -458,9 +442,7 @@ class Ui_MainWindow(object):
         return True
             
     def showstatus(self):
-    	"""
-    	Function: Show available and used points
-    	"""
+    	
         self.e1.setText(str(self.bat))
         self.e2.setText(str(self.bwl))
         self.e3.setText(str(self.ar))
@@ -484,10 +466,7 @@ class Ui_MainWindow(object):
             self.showstatus()
                          
     def showdlg(self, msg):
-    	"""
-		msg: Message to be shown in the dialog box
-		Function: Show the dialog box with msg
-    	"""
+    	
         Dialog = QtWidgets.QMessageBox()
         Dialog.setText(msg)
         Dialog.setWindowTitle("Dream Team Selector")
